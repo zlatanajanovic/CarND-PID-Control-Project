@@ -36,7 +36,7 @@ int main()
   PID pid_th;
   
   double Kp = 0.1;
-  double Ki = 0.01;
+  double Ki = 0.004;
   double Kd = 2.0;
   
   double Kp_th = 0.1;
