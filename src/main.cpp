@@ -84,7 +84,7 @@ int main()
 		  }
 		   
 		  // throttle PID
-		  pid_th.pdateError(set_speed-speed);
+		  pid_th.updateError(set_speed-speed);
 		  throttle_value = pid_th.TotalError();
           
           // DEBUG
