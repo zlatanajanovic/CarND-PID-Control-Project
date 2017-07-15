@@ -35,15 +35,16 @@ int main()
   PID pid_st;
   PID pid_th;
   
-  
   double Kp = 0.1;
   double Ki = 0.004;
   double Kd = 2.5;
   
-  
+  double Kp_th = 0.1;
+  double Ki_th = 0.002;
+  double Kd_th = 0;
   
   pid_st.Init(Kp, Ki, Kd);
-  pid_th.Init(0.1, 0.002, 0);
+  pid_th.Init(Kp_th, Ki_th, Kd_th);
   
   set_speed = 20;
   double throttle_value;
@@ -65,24 +66,24 @@ int main()
           double angle = std::stod(j[1]["steering_angle"].get<std::string>());
           double steer_value;
           /*
-          * TODO: Calcuate steering value here, remember the steering value is
+          * Calculate steering value here, remember the steering value is
           * [-1, 1].
-          * NOTE: Feel free to play around with the throttle and speed. Maybe use
-          * another PID controller to control the speed!
           */
 		  // steer PID
 		  pid_st.UpdateError(cte);
 	      steer_value = -pid_st.TotalError();
+		  
+		  // limit steering
 
-	       if(steer_value < -1.0){
-		     steer_value = -1.0;
-		   }else if(steer_value > 1.0){
-             steer_value = 1.0;
-		   }
+	      if(steer_value < -1.0){
+		    steer_value = -1.0;
+		  }else if(steer_value > 1.0){
+            steer_value = 1.0;
+		  }
 		   
-		   // throttle PID
-		   pid_th.pdateError(set_speed-speed);
-		   throttle_value = pid_th.TotalError();
+		  // throttle PID
+		  pid_th.pdateError(set_speed-speed);
+		  throttle_value = pid_th.TotalError();
           
           // DEBUG
           std::cout << "CTE: " << cte << " Steering Value: " << steer_value << std::endl;
