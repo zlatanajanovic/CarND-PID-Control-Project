@@ -10,7 +10,6 @@ public:
   double i_error;
   double d_error;
   
-  double sq_err;
 
   /*
   * Coefficients

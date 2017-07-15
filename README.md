@@ -3,6 +3,12 @@ Self-Driving Car Engineer Nanodegree Program
 
 ---
 
+## Reflections
+* PID controller showed decent behaviour on the track. There are still some small oscillations but it was possible to drive at around 20 m/s without leaving the track. Trying only P controller oscillations were very big. Introducing D component reduced it and using I component reduced steady state error. D component helps also in a corners as error rises faster here.
+
+* There are two PID controllers used for vehicle control. One for longitudinal and one for lateral motion. PID controller for longitudinal motion controls throttle to keep constant speed driving. This is tuned separately without any steering control on a straight part. After that, steering PID can be tuned. It is also tuned manually taking into consideration previously mentioned behaviour.
+
+
 ## Dependencies
 
 * cmake >= 3.5

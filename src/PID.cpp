@@ -19,7 +19,6 @@ void PID::Init(double Kp, double Ki, double Kd) {
     d_error = 0.0;
 	i_error = 0.0;
 	
-	sq_err = 0.0;
 }
 
 void PID::UpdateError(double cte) {
@@ -27,7 +26,6 @@ void PID::UpdateError(double cte) {
     p_error = cte;
 	i_error += cte;
 	
-	sq_err += cte * cte;
 }
 
 double PID::TotalError() {
