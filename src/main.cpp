@@ -71,7 +71,7 @@ int main()
 		  
 		  // steering PID
 		  pid_st.UpdateError(cte);
-	      steer_value = -pid_st.TotalError();
+	      steer_value = pid_st.TotalError();
 		  
 		  // limit steering		   
 	      if(steer_value < -1.0){
@@ -81,7 +81,7 @@ int main()
 		  }
 		  
 		  // throttle PID
-		  pid_th.UpdateError(set_speed-speed);
+		  pid_th.UpdateError(speed-set_speed);
 		  throttle_value = pid_th.TotalError();
           
           // DEBUG
