@@ -36,8 +36,8 @@ int main()
   PID pid_th;
   
   double Kp = 0.1;
-  double Ki = 0.004;
-  double Kd = 2.5;
+  double Ki = 0.002;
+  double Kd = 2.0;
   
   double Kp_th = 0.1;
   double Ki_th = 0.002;
@@ -65,24 +65,19 @@ int main()
           double steer_value;
 		  double throttle_value;
 		  
-		  double set_speed = 20;
-		  
-          /*
-          * Calculate steering value here, remember the steering value is
-          * [-1, 1].
-          */
-		  // steer PID
+		  double set_speed = 20;		  
+          
+		  // steering PID
 		  pid_st.UpdateError(cte);
 	      steer_value = -pid_st.TotalError();
 		  
-		  // limit steering
-
+		  // limit steering		   
 	      if(steer_value < -1.0){
 		    steer_value = -1.0;
 		  }else if(steer_value > 1.0){
             steer_value = 1.0;
 		  }
-		   
+		  
 		  // throttle PID
 		  pid_th.UpdateError(set_speed-speed);
 		  throttle_value = pid_th.TotalError();
