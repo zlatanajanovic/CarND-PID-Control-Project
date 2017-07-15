@@ -67,7 +67,7 @@ int main()
           double steer_value;
 		  double throttle_value;  
           
-		  double set_speed = 40;	
+		  double set_speed = 20;	
 		  
 		  // steering PID
 		  pid_st.UpdateError(cte);
