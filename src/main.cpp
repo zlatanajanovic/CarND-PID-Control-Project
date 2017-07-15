@@ -43,7 +43,7 @@ int main()
   double Ki_th = 0.002;
   double Kd_th = 0;
   
-  double set_speed = 40;	
+  
   
   pid_st.Init(Kp, Ki, Kd);
   pid_th.Init(Kp_th, Ki_th, Kd_th);
@@ -67,6 +67,8 @@ int main()
           double steer_value;
 		  double throttle_value;  
           
+		  double set_speed = 40;	
+		  
 		  // steering PID
 		  pid_st.UpdateError(cte);
 	      steer_value = -pid_st.TotalError();
